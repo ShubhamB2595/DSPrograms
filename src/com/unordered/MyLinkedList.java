@@ -1,4 +1,5 @@
 package com.unordered;
+
 /*
  * class for maintaining the linked list operations
  */
@@ -105,10 +106,8 @@ public class MyLinkedList < T extends Comparable<T> >{
 					System.out.println("Position for data: " + data + " at index: " + index);
 					return index;
 				}
-				else {
-					index++;
-					temp = temp.next;
-				}
+				index++;
+				temp = temp.next;
 			}
 		}
 		return -1;
@@ -127,9 +126,7 @@ public class MyLinkedList < T extends Comparable<T> >{
 				if(data == temp.data) {
 					return true;
 				}
-				else {
-					temp = temp.next;
-				}
+				temp = temp.next;
 			}
 		}
 		return false;
@@ -144,6 +141,31 @@ public class MyLinkedList < T extends Comparable<T> >{
 		}
 		else {
 			add(data);
+		}
+	}
+	
+	//Method for sorting the list in ascending order
+	public void sortAsc() {
+			
+		Node<T> temp = head, index = null;
+		T sort;
+			
+		if(isEmpty()) {
+			System.out.println("Linked list is Empty");
+		}
+		else {
+			while(temp != null) {
+				index = temp.next;
+				while(index != null) {
+					if(temp.data.compareTo(index.data) > 0) {
+						sort = temp.data;
+						temp.data = index.data;
+						index.data = sort;
+					}
+					index = index.next;
+				}
+				temp = temp.next;
+			}
 		}
 	}
 }
